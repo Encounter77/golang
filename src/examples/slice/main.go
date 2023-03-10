@@ -29,6 +29,20 @@ func main() {
 	// newSlice := new([]int)
 	// make 可预设长度[2-length]和内存空间[3-capacity]，避免未来的内存拷贝
 	// makeSlice := make([]int, 10, 20)
+
+	// 修改切片的值
+	slice1 := [5]int{10, 20, 30, 40, 50}
+	fmt.Println("slice1", slice1)
+	for _, value := range slice1 {
+		// 值传递 - value 是切片元素的拷贝
+		value *= 2
+	}
+	fmt.Println("modify slice1 by value", slice1)
+	for index := range slice1 {
+		// 下标传递(指针) - 修改的是传入切片的实际元素
+		slice1[index] *= 2
+	}
+	fmt.Println("modify slice1 by index", slice1)
 }
 
 func deleteItem(slice []int, index int) []int {
